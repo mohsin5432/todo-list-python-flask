@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/static/css/login.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel = "icon" type = "image/PNG" href = "static/images/logo.PNG">
+  <title>Timepay</title>
+</head>
+<body>
+
+  <!---header------->
+   <header>
+     <img src="/static/images/logo.png" alt="" width="40%">
+   </header>
+
+<!--account page--->
+    <div class="account-page">
+        <div class="container">
+          <div class="row">
+            <div class="col-2" id="image-sec">
+              <img src="/static/images/img.png" alt="" width="100%">
+            </div>
+            <div class="col-2" style="margin-top: 20px; margin-bottom: 20px;">
+              <div class="form-container">
+                <div class="form-btn">
+                  <span onclick="login()">Login</span>
+                  <span onclick="register()">Register</span>
+                  <hr id="Indicator">
+                </div>
+
+                <form name="Form" id="LoginForm" action="/login" method="post">
+                  <input type="text" name="username"  placeholder="Username">
+                  <input type="password" name="password" placeholder="password">
+                  <button type="submit" class="btn"  name="button">Login</button>
+                  <a href="#">Forgot password</a>
+                </form>
+
+                <form id="RegForm" action="/signup" method="post" onsubmit="return validateForm()">
+                  <input type="text" name="username"  placeholder="Username">
+                  <input type="email" name="email"  placeholder="Email">
+                  <input type="password" name="password" placeholder="password">
+                  <button type="submit" onclick="IsEmpty();" class="btn" name="button">Register</button>
+                  <p>{{message}}</p>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+    </div>
+
+
+<!---footer---->
+  <footer>
+    <div class="rowf">
+
+      <div class="col-3" style="margin-right: 0px; padding=left: 90px;">
+        <h1>Subscibe to our<br>Newsletter!</h1>
+      </div>
+
+    <div class="col-3" style="width: 50px;">
+      <form  action="/news" method="post">
+        <input type="email" name="email" placeholder="Email Address">
+        <button type="submit" class="btn" name="button">submit</button>
+      </form>
+      {{thanks}}
+    </div>
+    </div>
+
+    <div class="details">
+
+      <div class="logo">
+        <img src="/static/images/companylogo.png" alt="" width="100%">
+      </div>
+
+      <div class="aboutus">
+        <h2>About us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+           ligula eget dolor. Aenean massa.Cum sociis natoque penatibus et magnis dis
+            parturient montes.
+      </div>
+
+      <div class="contact">
+        <h2>Contact US</h2>
+        <p>Phone: +92300-***-****</p>
+        <p>Email: mohsinrazzaq3@gmail.com</p>
+        <p>Address: Islamabad street x.y.z <br> Pakistan</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+<!---js for form--->
+
+<script>
+  var LoginForm = document.getElementById('LoginForm');
+  var RegForm = document.getElementById('RegForm');
+  var Indicator = document.getElementById('Indicator');
+
+    function register(){
+      RegForm.style.transform = "translateX(300px)";
+      LoginForm.style.transform = "translateX(300px)";
+      Indicator.style.transform = "translateX(100px)";
+    }
+
+    function login(){
+      RegForm.style.transform = "translateX(0px)";
+      LoginForm.style.transform = "translateX(0px)";
+      Indicator.style.transform = "translateX(0px)";
+    }
+
+    function validateForm() {
+      var a = document.forms["Form"]["username"].value;
+      var c = document.forms["Form"]["password"].value;
+      if (a == null || a == "",c == null || c == "") {
+        alert("Please Fill All Required Field");
+        return false;
+      }
+    }
+
+</script>
+
+
+</body>
+</html>
